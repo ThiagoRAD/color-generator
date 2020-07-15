@@ -1,9 +1,21 @@
 const baseUrl = 'https://www.thecolorapi.com'
 
+const randomColor = Math.floor(Math.random()*16777215).toString(16)
 const colorPicker = document.getElementById('color-picker')
+colorPicker.value = `#${randomColor}`
+
+const randomNumber = Math.floor(Math.random() * 8)
 const colorSchemeSelect = document.getElementById('color-scheme')
+colorSchemeSelect.selectedIndex = randomNumber
+
 const getColorsButton = document.querySelector('button')
 const colorResultDiv = document.getElementById('color-result')
+
+
+const copyToClipboard = async (text) => {
+  await navigator.clipboard.writeText(text)
+  alert(`Copied ${text}`)
+}
 
 const getColor = async () => {
   const color = colorPicker.value.slice(1)
@@ -25,6 +37,7 @@ const getColor = async () => {
     containerDiv.appendChild(colorDiv)
     containerDiv.appendChild(textDiv)
     colorResultDiv.appendChild(containerDiv)
+    containerDiv.addEventListener('click', () => copyToClipboard(color))
     colorDiv.style.backgroundColor = color
     colorDiv.classList.add('color-box')
     return containerDiv
@@ -33,4 +46,5 @@ const getColor = async () => {
   colorResultDiv.replaceChildren(...divs)
 }
 
+getColor()
 getColorsButton.addEventListener('click', getColor)

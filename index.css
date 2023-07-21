@@ -29,6 +29,28 @@ body {
   border-radius: 0 0 8px 8px;
 }
 
+#color-picker {
+  height: 100%;
+  border-radius: 8px;
+}
+
+#color-scheme {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background-color: #555;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+}
 .color-container {
   display: flex;
   flex-direction: column;
